@@ -101,14 +101,18 @@ class FilterRange extends OneColumnFilter
 	public function getCondition(): array
 	{
 		$value = $this->getValue();
+		if ($value instanceof \Nette\Utils\ArrayHash) {
+			$str = $value;
+		} else {
+			if (str_contains($value, ',')) {
+				$str = explode(',', $value);
+			} elseif (str_contains($value, ';')) {
+					$str = explode(';', $value);
+			}
+		}
 
-        if (str_contains($value, ',')) {
-            $str = explode(',', $value);
-        } elseif (str_contains($value, ';')) {
-            $str = explode(';', $value);
-        }
-        $from = $str[0] ?? '';
-        $to = $str[1] ?? '';
+		$from = $str[0] ?? '';
+		$to = $str[1] ?? '';
 
 		return [
 			$this->column => [
