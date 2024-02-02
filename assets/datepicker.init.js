@@ -56,7 +56,8 @@ function initDataGridDateFilterPicker() {
         };
 
         picker.subscribe(tempusDominus.Namespace.events.change, (e) => {
-            $(this.form).trigger("change");
+            let event = new Event('change');
+            el.dispatchEvent(event);
         });
 
         el.dataset.hasDatePickerEventListener = 'true';
@@ -120,7 +121,8 @@ function initDataGridDateRangeFilterPicker() {
         };
 
         picker.subscribe(tempusDominus.Namespace.events.change, (e) => {
-            $(this.form).trigger("change");
+            let event = new Event('change');
+            el.dispatchEvent(event);
         });
 
         el.dataset.hasDatePickerEventListener = 'true';
