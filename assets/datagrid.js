@@ -26,6 +26,8 @@ if (typeof naja !== "undefined") {
 					naja.addEventListener('success', function (params)  {
 						var payload = isNaja2() ? params.detail.payload : params.response;
 						success(payload, najaEventParams(params).options);
+						initDataGridDateFilterPicker();
+						initDataGridDateRangeFilterPicker();
 					});
 				}
 
